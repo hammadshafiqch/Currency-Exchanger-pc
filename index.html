@@ -1,0 +1,267 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NEO | Currency Converter</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body>
+        <!-- Cyberpunk Grid Background -->
+        <div class="cyber-grid"></div>
+        <div class="scan-line"></div>
+
+        <div class="app">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <span class="logo-text">NEO<span class="accent">.</span></span>
+                </div>
+
+                <!-- Nav menu mein theme toggle button YEH hona chahiye -->
+<nav class="nav-menu">
+    <a href="#" class="nav-item active">
+        <i class="fas fa-chart-pie"></i>
+        <span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" id="themeToggleNav">  <!-- YEH ID honi chahiye -->
+        <i class="fas fa-sun"></i>
+        <span id="themeText">Light Mode</span>  <!-- YEH ID honi chahiye -->
+    </a>
+    
+</nav>
+                <div class="theme-switch-wrapper">
+                    <!-- <button class="theme-switch" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                        <span class="theme-toggle-ball"></span>
+                    </button> -->
+                </div>
+
+                <div class="user-profile">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="avatar">
+                    <div class="user-info">
+                        <span class="user-name">Curency converter</span>
+                        <span class="user-email">CCconverter@neo.com</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main">
+                <!-- Header -->
+                <header class="header">
+                    <div class="header-left">
+                        <h1>Currency Exchange</h1>
+                        <div class="live-badge">
+                            <span class="live-dot"></span>
+                            LIVE
+                        </div>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="market-status">
+                            <span class="status-label">MARKET</span>
+                            <span class="status-value open">OPEN</span>
+                        </div>
+                        <div class="date-display">
+                            <i class="far fa-calendar"></i>
+                            <span id="currentDate"></span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">EUR/USD</span>
+                            <span class="stat-value" id="eurUsdRate">1.0923</span>
+                            <span class="stat-change positive">+0.23%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">GBP/USD</span>
+                            <span class="stat-value" id="gbpUsdRate">1.2845</span>
+                            <span class="stat-change negative">-0.12%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">USD/JPY</span>
+                            <span class="stat-value" id="usdJpyRate">151.23</span>
+                            <span class="stat-change positive">+0.45%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">BTC/USD</span>
+                            <span class="stat-value" id="btcUsdRate">43,256</span>
+                            <span class="stat-change positive">+2.34%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Converter Card -->
+                <div class="converter-card">
+                    <div class="card-header">
+                        <h3>Convert Currency</h3>
+                        <div class="card-actions">
+                            <!-- <button class="card-action">
+                                <i class="far fa-star"></i>
+                            </button>
+                            <button class="card-action">
+                                <i class="far fa-bookmark"></i> -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="converter-body">
+                        <!-- Amount Input -->
+                        <div class="input-group">
+                            <label class="input-label">Amount</label>
+                            <div class="amount-input-wrapper">
+                                <input type="number" id="amount" value="1000.00" min="0" step="0.01" class="amount-input">
+                                <div class="currency-badge" id="fromCurrencyBadge">USD</div>
+                            </div>
+                        </div>
+
+                        <!-- Currency Selection -->
+                        <div class="currency-group">
+                            <div class="currency-box">
+                                <span class="box-label">From</span>
+                                <div class="currency-selector" id="fromSelector">
+                                    <div class="selected-currency">
+                                        <span class="currency-flag">🇺🇸</span>
+                                        <span class="currency-code">USD</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <select id="fromCurrency" class="hidden-select">
+                                        <option value="USD" selected>USD - US Dollar</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button class="swap-button" id="swapBtn">
+                                <i class="fas fa-arrow-right-arrow-left"></i>
+                            </button>
+
+                            <div class="currency-box">
+                                <span class="box-label">To</span>
+                                <div class="currency-selector" id="toSelector">
+                                    <div class="selected-currency">
+                                        <span class="currency-flag">🇪🇺</span>
+                                        <span class="currency-code">EUR</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <select id="toCurrency" class="hidden-select">
+                                        <option value="EUR" selected>EUR - Euro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rate Info -->
+                        <div class="rate-card">
+                            <div class="rate-info">
+                                <span class="rate-text" id="rateDisplay">1 USD = 0.92 EUR</span>
+                                <span class="rate-update">
+                                    <i class="far fa-clock"></i>
+                                    <span id="updateTime">Updated now</span>
+                                </span>
+                            </div>
+                            <div class="rate-chart-preview">
+                                <span class="sparkline">▁▂▃▄▅▆▇█▇▆▅▄▃▂▁</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-group">
+                            <button class="convert-btn" id="convertBtn">
+                                <span>Convert Now</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <!-- <button class="more-btn">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button> -->
+                        </div>
+
+                        <!-- Result -->
+                        <div class="result-container" id="result">
+                            <div class="result-left">
+                                <span class="result-label">You receive</span>
+                                <div class="result-amount" id="convertedAmount">
+                                    <span class="skeleton">920.00 EUR</span>
+                                </div>
+                            </div>
+                            <div class="result-right">
+                                <div class="fee-info">
+                                    <i class="far fa-question-circle"></i>
+                                    <span>No fees</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions
+                <div class="quick-actions">
+                    <button class="quick-action">
+                        <i class="fas fa-bell"></i>
+                        <span>Set Alert</span>
+                    </button>
+                    <button class="quick-action">
+                        <i class="fas fa-chart-simple"></i>
+                        <span>View Chart</span>
+                    </button>
+                    <button class="quick-action">
+                        <i class="fas fa-clock-rotate-left"></i>
+                        <span>Schedule</span>
+                    </button>
+                    <button class="quick-action">
+                        <i class="fas fa-arrow-trend-up"></i>
+                        <span>Predict</span>
+                    </button>
+                </div> -->
+
+                <!-- History Section -->
+                <div class="history-section">
+                    <div class="history-header">
+                        <h4>Recent Activity</h4>
+                        <button class="view-all" id="clearHistoryBtn">
+                            Clear All
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="history-list" id="historyList">
+                        <!-- History items will appear here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
